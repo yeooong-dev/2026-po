@@ -1,0 +1,43 @@
+/* 1. Box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. 기본 margin 제거 */
+body, h1, h2, h3, h4, h5, h6, p, figure {
+  margin: 0;
+}
+
+/* 3. body 기본 세팅 */
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  font-family: Istok-Web;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+/* 4. 미디어 요소 */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. form 요소 */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 6. 링크 */
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* 7. 리스트 */
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
