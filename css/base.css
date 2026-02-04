@@ -5,7 +5,7 @@
 
 /* 2. 기본 margin 제거 */
 body, h1, h2, h3, h4, h5, h6, p, figure {
-  margin: 0;
+  margin: 0 !important;
 }
 
 /* 3. body 기본 세팅 */
@@ -16,6 +16,9 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 1.25rem;
   letter-spacing: 0.05em;
+  background-color: #ffffff;
+  transition: background-color 0.8s ease;
+  word-break: keep-all;
 }
 
 /* 4. 미디어 요소 */

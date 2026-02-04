@@ -1,172 +1,338 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/typography.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
     <title>INYEONG'S PORTFOLIO</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="wrap">
-        <!-- main -->
-        <div id="section1">
-            <!-- header -->
-            <div class="header">
-                <div class="blank">
-                    <h1>INYEONG'S PORTFOLIO</h1>
-                    <div class="menu">
-                        <a href="#section2">ABOUT ME</a>
-                        <a href="#section3">WORK</a>
-                        <a href="#section4">PROJECT</a>
-                        <a href="#section5">CONTACT</a>
-                    </div>
-                </div>
+      <!-- main -->
+      <div id="section1">
+        <div class="s1-bg" aria-hidden="true">
+          <div class="s1-bg__fill"></div>
+        </div>
+        <!-- header -->
+        <div class="header">
+          <div class="blank">
+            <h1>
+              <a href="#">INYEONG'S PORTFOLIO</a>
+            </h1>
+            <div class="menu">
+              <a href="#section2">ABOUT ME</a>
+              <a href="#section3">WORK</a>
+              <a href="#section4">PROJECT</a>
+              <a href="#section5">CONTACT</a>
             </div>
-
-            <div class="main-wrapper">
-                <div class="hero">
-                    <h5>INYEONG<span>'S<br />PORTFOLIO</span></h5>
-                    <p>구조적인 마크업과 명확한 기준을 통해 흐름이 자연스럽고<br />확장 가능한 웹 퍼블리싱을 합니다.</p>
-                    <img src="assets/images/main_bg.png" alt=""/>
-                </div>
-
-                <div class="scroll_icon">
-                    <p>SCROLL DOWN</p>
-                    <img src="assets/icons/scoll_down_icon.png" alt=""/>
-                </div>
-            </div>
-
+          </div>
         </div>
 
-        <!-- About Me -->
-        <div id="section2">
-            <h5 class="title">ABOUT ME</h5>
+        <div class="main-wrapper">
+          <div class="hero">
+            <h5 class="fade-up">
+              INYEONG<span>'S<br />PORTFOLIO</span>
+            </h5>
+            <p class="fade-up">
+              구조적인 마크업과 명확한 기준을 통해 흐름이 자연스럽고<br />확장
+              가능한 웹 퍼블리싱을 합니다.
+            </p>
+            <img src="assets/images/main_bg.png" alt="" />
+          </div>
 
-            <div class="middle_box">
-                <img src="assets/images/me.png" alt=""/>
-                <div class="text_box">
-                    <p class="name mb-4">INYEONG lee</p>
-                    <p class="mb">안녕하세요. 웹 퍼블리셔 이인영입니다.</p><br />
-                    <p class="mb">HTML, CSS, JavaScript 기반의 퍼블리싱을 중심으로<br />반응형 웹과 웹 표준, 웹 접근성을 고려한 UI 구현을 해왔습니다.</p><br />
-                    <p class="mb">외주 작업과 사이트 리뉴얼 프로젝트를 통해<br />디자이너 및 PM과 협업하며 요구사항을 구조적으로 정리하고<br />화면으로 구현하는 역할을 수행해 왔습니다.</p><br />
-                    <p class="mb mb-2">환경의 마크업 작업과 Figma를 활용한 디자인 작업이 가능하며,<br />프로젝트의 목적과 흐름을 이해하는 퍼블리싱을 지향합니다.</p><br />
-             
-                <a href="https://torch-wall-005.notion.site/InYeong-e119ac40fd2847cbb6448e8caacac7aa?pvs=74" target="_blank">
-                    <p class="me-3">자기소개 더보기</p>
-                    <i class="bi bi-arrow-right-circle-fill"></i>
-                </a>
-                </div>
-            </div>
+          <div class="scroll_icon">
+            <p>SCROLL DOWN</p>
+            <img src="assets/icons/scoll_down_icon.png" alt="" />
+          </div>
+        </div>
+      </div>
 
-            <div class="skills">
-                <img src="assets/icons/html.png" alt="html" />
-                <img src="assets/icons/css.png" alt="css"/>
-                <img src="assets/icons/js.png" alt="js"/>
-                <img src="assets/icons/react.png" alt="react"/>
-                <img src="assets/icons/styled.png" alt="styled-components"/>
-                <img src="assets/icons/jquery.png" alt="jquery"/>
-                <img src="assets/icons/boot.svg" alt="bootstrap"/>
-                <img src="assets/icons/figma.svg" alt="figma"/>
-                <img src="assets/icons/aws.png" alt="aws"/>
-                <img src="assets/icons/mysql.png" alt="MySQL"/>
-                <img src="assets/icons/psd.svg" alt="photoshop"/>
-                <img src="assets/icons/ai.svg" alt="illustrator"/>
-                <img src="assets/icons/github.png" alt="github"/>
-            </div>
+      <!-- About Me -->
+      <div id="section2">
+        <h5 class="title">ABOUT ME</h5>
+
+        <div class="middle_box fade-up">
+          <img src="assets/images/me.svg" alt="" />
+          <div class="text_box">
+            <p class="name mb-4">INYEONG lee</p>
+            <p class="mb">안녕하세요. 웹 퍼블리셔 이인영입니다.</p>
+            <br />
+            <p class="mb">
+              HTML, CSS, JavaScript 기반의 퍼블리싱을 중심으로<br />반응형 웹과
+              웹 표준, 웹 접근성을 고려한 UI 구현을 해왔습니다.
+            </p>
+            <br />
+            <p class="mb">
+              외주 작업과 사이트 리뉴얼 프로젝트를 통해<br />디자이너 및 PM과
+              협업하며 요구사항을 구조적으로 정리하고<br />화면으로 구현하는
+              역할을 수행해 왔습니다.
+            </p>
+            <br />
+            <p class="mb mb-2">
+              환경의 마크업 작업과 Figma를 활용한 디자인 작업이 가능하며,<br />프로젝트의
+              목적과 흐름을 이해하는 퍼블리싱을 지향합니다.
+            </p>
+            <br />
+
+            <a
+              href="https://torch-wall-005.notion.site/InYeong-e119ac40fd2847cbb6448e8caacac7aa?pvs=74"
+              target="_blank"
+            >
+              <p class="me-3">자기소개 더보기</p>
+              <i class="bi bi-arrow-right-circle-fill"></i>
+            </a>
+          </div>
         </div>
 
-        <!-- WORK -->
-        <div id="section3">
+        <div class="skills-marquee">
+          <div class="skills-track">
+            <img src="assets/icons/html.png" alt="html" />
+            <img src="assets/icons/css.png" alt="css" />
+            <img src="assets/icons/js.png" alt="js" />
+            <img src="assets/icons/react.png" alt="react" />
+            <img src="assets/icons/styled.png" alt="styled-components" />
+            <img src="assets/icons/jquery.png" alt="jquery" />
+            <img src="assets/icons/boot.svg" alt="bootstrap" />
+            <img src="assets/icons/figma.svg" alt="figma" />
+            <img src="assets/icons/aws.png" alt="aws" />
+            <img src="assets/icons/mysql.png" alt="MySQL" />
+            <img src="assets/icons/psd.svg" alt="photoshop" />
+            <img src="assets/icons/ai.svg" alt="illustrator" />
+            <img src="assets/icons/github.png" alt="github" />
+
+            <!-- (복제) -->
+            <img src="assets/icons/html.png" alt="html" />
+            <img src="assets/icons/css.png" alt="css" />
+            <img src="assets/icons/js.png" alt="js" />
+            <img src="assets/icons/react.png" alt="react" />
+            <img src="assets/icons/styled.png" alt="styled-components" />
+            <img src="assets/icons/jquery.png" alt="jquery" />
+            <img src="assets/icons/boot.svg" alt="bootstrap" />
+            <img src="assets/icons/figma.svg" alt="figma" />
+            <img src="assets/icons/aws.png" alt="aws" />
+            <img src="assets/icons/mysql.png" alt="MySQL" />
+            <img src="assets/icons/psd.svg" alt="photoshop" />
+            <img src="assets/icons/ai.svg" alt="illustrator" />
+            <img src="assets/icons/github.png" alt="github" />
+          </div>
+        </div>
+      </div>
+
+      <!-- WORK -->
+      <div id="section3">
         <h5 class="title">WORK</h5>
+        <svg
+          width="2000"
+          height="260"
+          viewBox="0 0 2000 260"
+          class="text_bg"
+          aria-hidden="true"
+        >
+          <text
+            x="50%"
+            y="50%"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            fill="none"
+            stroke="#f0f0f0"
+            stroke-width="3"
+            stroke-linejoin="miter"
+            stroke-miterlimit="10"
+            font-size="190"
+            font-weight="900"
+            letter-spacing="0.05em"
+            font-family="Impact, Arial Black, Anton, sans-serif"
+          >
+            PRACTICAL EXPERIENCE
+          </text>
+        </svg>
 
         <div class="work-grid">
-            <a href="#" target="_blank" class="work-item">
+          <a href="#" target="_blank" class="work-item fade-up">
             <div class="work-card">
-                <img src="assets/images/hansik.png" alt="한식진흥원 메인페이지" />
+              <img src="assets/images/hansik.png" alt="한식진흥원 메인페이지" />
             </div>
 
             <div class="work-text">
-                <p class="work-title">공공기관</p>
-                <span class="work-desc">
-                Web | 디자인 · 퍼블리싱 · 유지보수 · 부트스트랩 · 웹표준성 · 웹접근성<br />
+              <p class="work-title">공공기관</p>
+              <span class="work-desc">
+                Web | 디자인 · 퍼블리싱 · 유지보수 · 부트스트랩 · 웹표준성 ·
+                웹접근성<br />
                 · 사이트 리뉴얼 · 기획 · 반응형
-                </span>
+              </span>
             </div>
-            </a>
+          </a>
 
-            <a href="#" target="_blank" class="work-item is-lower">
+          <a href="#" target="_blank" class="work-item is-lower fade-up-02">
             <div class="work-card">
-                <img src="assets/images/seoulcon.png" alt="서울콘 메인페이지" />
+              <img src="assets/images/seoulcon.png" alt="서울콘 메인페이지" />
             </div>
 
             <div class="work-text">
-                <p class="work-title">서울콘</p>
-                <span class="work-desc">Web | 신규 사이트 구축 · 퍼블리싱 · 반응형 · 애니메이션 · 피그마</span>
+              <p class="work-title">서울콘</p>
+              <span class="work-desc"
+                >Web | 신규 사이트 구축 · 퍼블리싱 · 반응형 · 애니메이션 ·
+                피그마</span
+              >
             </div>
-            </a>
+          </a>
         </div>
-        </div>
+      </div>
 
-        <!-- PROJECT -->
-        <div id="section4">
+      <!-- PROJECT -->
+      <div id="section4">
         <h5 class="title">PROJECT</h5>
 
+        <div class="pj-preview" aria-hidden="true">
+          <img class="pj-img pj-img--back" src="" alt="" />
+          <img class="pj-img pj-img--front" src="" alt="" />
+        </div>
+
         <div class="project-wrap">
-            <div class="project-list">
-
-            <div class="project-row">
-                <div class="pj-name">Dreamus</div>
-                <div class="pj-stack">html, js, css</div>
-                <div class="pj-links">
+          <div class="project-list">
+            <div class="project-row" data-img="assets/images/dreamus.png">
+              <div class="pj-name">Dreamus</div>
+              <div class="pj-stack">html, js, css</div>
+              <div class="pj-links">
                 <a href="#" target="_blank">site</a>
-                <span class="bar">|</span>
                 <a href="#" target="_blank">github</a>
-                <span class="bar">|</span>
                 <a href="#" target="_blank">notion</a>
-                </div>
-                <div class="pj-year">2026</div>
+              </div>
+              <div class="pj-year">2026</div>
             </div>
 
-            <div class="project-row">
-                <div class="pj-name">Port</div>
-                <div class="pj-stack">TypeScript, styled-components, React-Query, MySQL</div>
-                <div class="pj-links">
-                <a href="https://github.com/yeooong-dev/FE-PORT" target="_blank">github</a>
-                <span class="bar">|</span>
-                <a href="https://www.notion.so/PORT-2d4b3563c5954497bf39f77637d8ba07" target="_blank">notion</a>
-                </div>
-                <div class="pj-year">2023</div>
+            <div class="project-row" data-img="assets/images/port.png">
+              <div class="pj-name">Port</div>
+              <div class="pj-stack">
+                TypeScript, styled-components, React-Query, MySQL
+              </div>
+              <div class="pj-links">
+                <a href="https://github.com/yeooong-dev/FE-PORT" target="_blank"
+                  >github</a
+                >
+                <a
+                  href="https://www.notion.so/PORT-2d4b3563c5954497bf39f77637d8ba07"
+                  target="_blank"
+                  >notion</a
+                >
+              </div>
+              <div class="pj-year">2023</div>
             </div>
 
-            <div class="project-row">
-                <div class="pj-name">Mood</div>
-                <div class="pj-stack">TypeScript, styled-components, React-Query, Redux</div>
-                <div class="pj-links">
-                <a href="https://github.com/MOOD-classic/FE-MOOD" target="_blank">github</a>
-                <span class="bar">|</span>
-                <a href="https://www.notion.so/MOOD-f0f722a676194a7eb532e1be615f93c8" target="_blank">notion</a>
-                </div>
-                <div class="pj-year">2023</div>
+            <div class="project-row" data-img="assets/images/mood.png">
+              <div class="pj-name">Mood</div>
+              <div class="pj-stack">
+                TypeScript, styled-components, React-Query, Redux
+              </div>
+              <div class="pj-links">
+                <a
+                  href="https://github.com/MOOD-classic/FE-MOOD"
+                  target="_blank"
+                  >github</a
+                >
+                <a
+                  href="https://www.notion.so/MOOD-f0f722a676194a7eb532e1be615f93c8"
+                  target="_blank"
+                  >notion</a
+                >
+              </div>
+              <div class="pj-year">2023</div>
             </div>
-
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
 
-        <!-- CONTACT -->
-        <div id="section5">
-            <h5 class="mb-4">yeooong12@naver.com</h5>
-            <p class="mb-5">함께 이야기 나눌 수 있는 기회가 있다면 언제든 편하게 연락 주세요.</p>
-                <a href="mailto:yeooong12@naver.com" target="_blank">
-                    <p class="me-3" style="color: #2a6ae2;">메일 보내기</p>
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                </a>
-            <span>© 2026 Inyeong Lee. All rights reserved.</span>
+      <!-- CONTACT -->
+      <div id="section5">
+        <svg
+          class="flight-svg"
+          width="600"
+          height="200"
+          viewBox="0 0 800 220"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path
+            class="flight-dots"
+            d="
+                    M 60 145
+                    C 200 165, 300 165, 380 150
+                    C 410 145, 430 150, 440 160
+                    C 455 180, 430 200, 410 185
+                    C 390 170, 400 145, 435 145
+                    C 500 130, 580 150, 650 50
+                "
+            stroke="#0B63FF"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-dasharray="10 18"
+            fill="none"
+          />
+
+          <path
+            class="flight-reveal"
+            pathLength="1"
+            d="
+                    M 60 145
+                    C 200 165, 300 165, 380 150
+                    C 410 145, 430 150, 440 160
+                    C 455 180, 430 200, 410 185
+                    C 390 170, 400 145, 435 145
+                    C 500 130, 580 150, 650 50
+                "
+            stroke="#0B63FF"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+
+          <!-- plane wrapper -->
+          <g class="plane-wrap">
+            <g transform="translate(660 20) rotate(-25)">
+              <path
+                d="M 0 0 L 35 12 L 0 30 L 8 14 Z"
+                stroke="#0B63FF"
+                stroke-width="4"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <path
+                d="M 8 14 L 32 12"
+                stroke="#0B63FF"
+                stroke-width="6"
+                stroke-linecap="round"
+                fill="none"
+              />
+            </g>
+          </g>
+        </svg>
+
+        <div class="contact-text">
+          <h5 class="mb-4 fade-up-02">yeooong12@naver.com</h5>
+          <p class="mb-5 fade-up">
+            함께 이야기 나눌 수 있는 기회가 있다면 언제든 편하게 연락 주세요.
+          </p>
+          <a href="mailto:yeooong12@naver.com" target="_blank" class="fade-up">
+            <p class="me-3" style="color: #2a6ae2">메일 보내기</p>
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </a>
         </div>
+        <span>© 2026 Inyeong Lee. All rights reserved.</span>
+      </div>
     </div>
-</body>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
