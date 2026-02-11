@@ -6,7 +6,7 @@
 /* 공통 */
 .title {
   font-size: 2.2rem;
-  font-family: "Roboto-black";
+  font-family: "Roboto", sans-serif;
   width: 100%;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .header h1 {
-  font-family: "Roboto-black";
+  font-family: "Roboto", sans-serif;
   font-size: 1.125rem;
 }
 
@@ -158,7 +158,7 @@
 }
 
 .hero span {
-  font-family: "Roboto-black";
+  font-family: "Roboto", sans-serif;
   font-size: 4.3rem;
   color: #8b8b8b;
   letter-spacing: 0.1em;
