@@ -159,7 +159,7 @@
 .hero span {
   font-family: "Roboto", sans-serif;
   font-size: 5.2rem;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   color: #a5a5a5;
 }
 
@@ -364,9 +364,12 @@
   display: block;
 }
 
+.work-item {
+  transition: transform 0.18s ease-out;
+}
+
 .work-item:hover {
-  transform: scale(1.02);
-  transition-duration: 0.2s;
+  transform: scale(1.03);
 }
 
 .work-card {
@@ -552,7 +555,7 @@
   min-height: 100vh;
   padding: 5vw 8vw;
   position: relative;
-  background: #f6f6f6;
+  background: #ffffff;
   overflow: hidden;
 }
 

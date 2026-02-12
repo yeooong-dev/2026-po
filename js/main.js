@@ -67,43 +67,6 @@ items2.forEach((item) => observer2.observe(item));
   update();
 })();
 
-// WORK
-// 텍스트 배경 애니메이션
-(() => {
-  const section3 = document.querySelector("#section3");
-  const textBg = document.querySelector("#section3 .text_bg");
-  if (!section3 || !textBg) return;
-
-  function resetWork() {
-    section3.classList.remove("is-typing", "is-reveal");
-    void textBg.offsetWidth;
-  }
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 들어올 때마다 초기화 후 다시 시작
-          resetWork();
-          section3.classList.add("is-typing");
-        } else {
-          // 섹션을 벗어나면 상태 초기화
-          resetWork();
-        }
-      });
-    },
-    { threshold: 0.35 }
-  );
-
-  io.observe(section3);
-
-  textBg.addEventListener("animationend", (e) => {
-    if (e.animationName === "worklog-write") {
-      section3.classList.add("is-reveal");
-    }
-  });
-})();
-
 // PROJECT
 // 커서 이미지
 const rows = document.querySelectorAll(".project-row");
