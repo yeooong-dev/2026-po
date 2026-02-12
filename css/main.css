@@ -15,7 +15,7 @@
   opacity: 0;
   transform: translateY(80px);
   transition:
-    opacity 1s ease,
+    opacity 2s ease,
     transform 1s ease;
 }
 
@@ -147,21 +147,20 @@
 .hero h5,
 .hero p {
   z-index: 1;
-  margin: 10px;
 }
 
 .hero h5 {
   font-family: "Mogra", cursive;
-  font-size: 4.5rem;
+  font-size: 5.5rem;
   letter-spacing: 0.17em;
   line-height: 1.2;
 }
 
 .hero span {
   font-family: "Roboto", sans-serif;
-  font-size: 4.3rem;
-  color: #8b8b8b;
-  letter-spacing: 0.1em;
+  font-size: 5.2rem;
+  letter-spacing: 0.10em;
+  color: #a5a5a5;
 }
 
 .hero p {
@@ -310,7 +309,7 @@
 
 .skills-track img {
   height: auto;
-  max-height: 85px;
+  max-height: 90px;
   flex-shrink: 0;
 }
 
@@ -428,7 +427,7 @@
   background: #323b44;
   padding: 5vw 8vw;
   z-index: 9;
-  color: #fff;
+  color: #efefef;
 }
 
 .project-wrap {
@@ -553,7 +552,7 @@
   min-height: 100vh;
   padding: 5vw 8vw;
   position: relative;
-  background: #fff;
+  background: #f6f6f6;
   overflow: hidden;
 }
 
