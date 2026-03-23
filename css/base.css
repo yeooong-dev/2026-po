@@ -8,6 +8,14 @@ body, h1, h2, h3, h4, h5, h6, p, figure {
   margin: 0 !important;
 }
 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
 /* 3. body 기본 세팅 */
 body {
   min-height: 100vh;

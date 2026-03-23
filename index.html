@@ -6,11 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mogra&family=Roboto:wght@900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Mogra&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/main.css" />
@@ -31,21 +27,36 @@
     <div id="wrap">
       <!-- main -->
       <div id="section1">
-        <div class="s1-bg" aria-hidden="true">
-          <div class="s1-bg__fill"></div>
-        </div>
         <!-- header -->
         <div class="header">
           <div class="blank">
             <h1>
-              <a href="#">INYEONG'S PORTFOLIO</a>
+              <a href="#section1">INYEONG'S PORTFOLIO</a>
             </h1>
-            <div class="menu">
+          </div>
+        </div>
+
+        <div class="side-menu" aria-label="section navigation">
+          <button
+            type="button"
+            class="side-menu__trigger"
+            aria-label="섹션 메뉴"
+          >
+            <span class="side-menu__dot" data-target="#section1"></span>
+            <span class="side-menu__dot" data-target="#section2"></span>
+            <span class="side-menu__dot" data-target="#section3"></span>
+            <span class="side-menu__dot" data-target="#section4"></span>
+            <span class="side-menu__dot" data-target="#section5"></span>
+          </button>
+
+          <div class="side-menu__panel">
+            <nav class="side-menu__nav">
+              <a href="#section1">MAIN</a>
               <a href="#section2">ABOUT ME</a>
               <a href="#section3">WORK</a>
               <a href="#section4">PROJECT</a>
               <a href="#section5">CONTACT</a>
-            </div>
+            </nav>
           </div>
         </div>
 
@@ -140,7 +151,7 @@
       </div>
 
       <!-- WORK -->
-      <div id="section3">
+      <div id="section3" style="background: #f2f2f2">
         <h5 class="title">WORK</h5>
         <svg
           width="2000"
@@ -154,8 +165,8 @@
             y="50%"
             text-anchor="middle"
             dominant-baseline="middle"
-            fill="none"
-            stroke="#f0f0f0"
+            fill="#f2f2f2"
+            stroke="#e4e4e4"
             stroke-width="3.5"
             stroke-linejoin="miter"
             stroke-miterlimit="10"
@@ -169,47 +180,311 @@
         </svg>
 
         <div class="work-grid">
-          <a
-            href="https://torch-wall-005.notion.site/304f78f6617780d7b62af70ef734f899"
-            target="_blank"
-            class="work-item fade-up"
-          >
+          <div class="work-item fade-up">
             <div class="work-card">
               <img src="assets/images/hansik.png" alt="한식진흥원 메인페이지" />
             </div>
 
             <div class="work-text">
-              <p class="work-title">공공기관</p>
+              <p class="work-title">공공기관 유지보수</p>
               <span class="work-desc">
-                Web | 디자인 · 퍼블리싱 · 유지보수 · 부트스트랩 · 웹표준성 ·
-                웹접근성<br />
+                Web | 디자인 · 퍼블리싱 · 부트스트랩 · 웹표준성 · 웹접근성<br />
                 · 사이트 리뉴얼 · 기획 · 반응형
               </span>
+              <button
+                type="button"
+                class="detail-btn"
+                data-modal-target="modal-hansik"
+              >
+                상세보기
+              </button>
             </div>
-          </a>
+          </div>
 
-          <a
-            href="https://torch-wall-005.notion.site/304f78f6617780a09a75ee3ba2afb6da"
-            target="_blank"
-            class="work-item is-lower fade-up-02"
-          >
+          <div class="work-item is-lower fade-up-02">
             <div class="work-card">
               <img src="assets/images/seoulcon.png" alt="서울콘 메인페이지" />
             </div>
 
             <div class="work-text">
               <p class="work-title">서울콘</p>
-              <span class="work-desc"
-                >Web | 신규 사이트 구축 · 퍼블리싱 · 반응형 · 애니메이션 ·
-                피그마</span
+              <span class="work-desc">
+                Web | 신규 사이트 구축 · 퍼블리싱 · 반응형 · 애니메이션 · 피그마 
+              </span>
+              <button
+                type="button"
+                class="detail-btn"
+                data-modal-target="modal-seoulcon"
+              >
+                상세보기
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-modal" id="workModal" aria-hidden="true">
+          <div class="custom-modal__dim"></div>
+
+          <div
+            class="custom-modal__dialog custom-modal__dialog--detail"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="workModalTitle"
+          >
+            <button type="button" class="custom-modal__close" aria-label="닫기">
+              ×
+            </button>
+
+            <div class="custom-modal__body" id="workModalBody"></div>
+          </div>
+        </div>
+
+        <!-- 한식진흥원 상세 템플릿 -->
+        <template id="modal-hansik">
+          <div class="work-detail">
+            <div class="work-detail__hero">
+              <div class="work-detail__flag">
+                <h2>🇰🇷</h2>
+              </div>
+
+              <h2 class="work-detail__title">한식진흥원</h2>
+              <h3 class="work-detail__subtitle">
+                1. 한식포털 · 한식문화공간 사이트 유지보수
+              </h3>
+              <p class="work-detail__date">(2024.04 ~ 2025.09)</p>
+
+              <p class="work-detail__contrib">
+                기여도 : 디자인 100%, 퍼블리싱 100%
+              </p>
+
+              <div class="work-detail__stack mb-4">
+                HTML / CSS / Bootstrap / JavaScript / jQuery / Photoshop /
+                Illustrator / SVN
+              </div>
+              <a href="https://www.hansik.or.kr/main/main.do" target="_blank"
+                >한식진흥원 홈페이지 바로가기 🔗</a
+              >
+              <br />
+              <a href="https://resv.hansik.or.kr/main/main.do" target="_blank"
+                >한식문화공간 홈페이지 바로가기 🔗</a
               >
             </div>
-          </a>
-        </div>
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">
+                💻 퍼블리싱 (PC, Mobile)
+              </h4>
+
+              <ul class="work-detail__list">
+                <li class="mb-3">
+                  • 신규 화면 구축(퍼블리싱)
+                  <ul>
+                    <li>1. 한식자료 > 한식레시피 > 프리미엄 한식 레시피</li>
+                    <li>2. 한식자료 > 지역별 > 지역음식 기록화</li>
+                    <li>3. 사업안내 > 사업분야 > 사업소개</li>
+                    <li>4. 프라이버시 센터(전체 메뉴) 화면 구축</li>
+                  </ul>
+                </li>
+
+                <li class="mb-3">
+                  • 개편/리뉴얼
+                  <ul>
+                    <li>1. 개인정보처리방침 페이지 리뉴얼</li>
+                    <li>
+                      2. 사이트 공통 UI/레이아웃 일부 리뉴얼(운영 요구사항 반영)
+                    </li>
+                    <li>
+                      3. CMS 관리자 페이지(메인/예약내역/메뉴관리) UI 개선 및
+                      퍼블리싱
+                    </li>
+                    <li>4. 회원가입 ‘정보입력’ 구간 리뉴얼</li>
+                    <li>5. 한식문화공간(예약) 결제 요청 페이지 리뉴얼</li>
+                  </ul>
+                </li>
+
+                <li class="mb-3">
+                  • 운영 유지보수
+                  <ul>
+                    <li>
+                      1. 해외 우수 한식당/해외 한식당
+                      협의체/조직도/개인정보처리방침 등 운영 콘텐츠 상시
+                      업데이트 및 반영
+                    </li>
+                    <li>
+                      2. 한식문화공간(예약) 사이트 기능/레이아웃 이슈 대응
+                    </li>
+                    <li>
+                      3. 한식레시피 표기/외국어 표기 오류 점검 및 일괄 수정(운영
+                      기준 반영)
+                    </li>
+                    <li>4. 클릭 오류, 반응형 레이아웃 깨짐 등 UI 이슈 수정</li>
+                    <li>5. CMS 관리자 페이지 오류 수정 및 운영 대응</li>
+                    <li>
+                      6. 웹 접근성 대응: 점검 이슈 수정 및 갱신 대응 (2025.02.24
+                      ~ 2026.02.23)
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">🎨 디자인</h4>
+
+              <ul class="work-detail__list">
+                <li>• 월간 운영 배너 디자인 제작</li>
+                <li>• 요청 건 팝업 디자인 제작</li>
+                <li>• 운영 이슈 대응용 이미지 편집 및 보정</li>
+              </ul>
+            </section>
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">🎸 기타</h4>
+
+              <ul class="work-detail__list">
+                <li>
+                  • 웹 표준/접근성 관점의 마크업 및 UI 개선 작업(운영 이슈 기반)
+                </li>
+                <li>• 클라우드 이관 사업 지원(운영/퍼블리싱 관점 지원)</li>
+              </ul>
+            </section>
+
+            <hr class="work-detail__divider" />
+
+            <section class="work-detail__section">
+              <h3 class="work-detail__subtitle">2. 한식포털 사이트 리뉴얼</h3>
+              <p class="work-detail__date">(2025.08 ~ 2025.08)</p>
+              <p class="work-detail__contrib">기여도 : 퍼블리싱 100%</p>
+
+              <div class="work-detail__stack">
+                HTML / CSS / JavaScript / Illustrator / SVN
+              </div>
+            </section>
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">
+                • 메인 페이지 리뉴얼 (PC, Mobile)
+              </h4>
+              <ul class="work-detail__list">
+                <li>
+                  1. 헤더/검색/사이드 메뉴/본문/푸터 등 메인페이지 전반 퍼블리싱
+                  리뉴얼
+                </li>
+              </ul>
+
+              <div class="work-detail__image">
+                <img
+                  src="assets/images/hansik-detail-01.jpg"
+                  alt="한식포털 메인 리뉴얼 화면"
+                />
+              </div>
+            </section>
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">
+                • 서브 페이지 공통 화면 리뉴얼 (PC, Mobile)
+              </h4>
+              <ul class="work-detail__list">
+                <li>1. 서브 페이지 헤더/푸터 고정 영역 퍼블리싱 개선</li>
+              </ul>
+
+              <div class="work-detail__image">
+                <img
+                  src="assets/images/hansik-detail-02.jpg"
+                  alt="한식포털 서브 페이지 리뉴얼 화면"
+                />
+              </div>
+            </section>
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">
+                • 메뉴/사이트맵(PC, Mobile)
+              </h4>
+              <ul class="work-detail__list">
+                <li>1. GNB 메뉴 구조 리뉴얼 및 퍼블리싱</li>
+              </ul>
+
+              <div class="work-detail__image">
+                <img
+                  src="assets/images/hansik-detail-03.jpg"
+                  alt="한식포털 메뉴 및 하단 구조 개선 화면"
+                />
+              </div>
+
+              <ul class="work-detail__list">
+                <li class="mt-4">2. 사이트맵 리뉴얼 및 퍼블리싱</li>
+              </ul>
+
+              <div class="work-detail__image">
+                <img
+                  src="assets/images/hansik-detail-04.jpg"
+                  alt="사이트맵 리뉴얼 화면"
+                />
+              </div>
+            </section>
+          </div>
+        </template>
+
+        <!-- 서울콘 상세 템플릿 -->
+        <template id="modal-seoulcon">
+          <div class="work-detail">
+            <div class="work-detail__hero">
+              <div class="work-detail__flag">
+                <h2>🎆</h2>
+              </div>
+
+              <h2 class="work-detail__title">서울콘</h2>
+              <h3 class="work-detail__subtitle">
+                서울콘 공식 웹사이트 신규 구축 (PC · Mobile)
+              </h3>
+              <p class="work-detail__date">(2024.10 ~ 2024.12)</p>
+
+              <p class="work-detail__contrib">기여도 : 퍼블리싱 100%</p>
+
+              <div class="work-detail__stack">
+                React / Styled-Components / Figma
+              </div>
+            </div>
+
+            <section class="work-detail__section">
+              <p class="work-detail__paragraph">
+                서울콘 공식 웹사이트 외주 프로젝트로 참여하여 React 기반
+                퍼블리싱을 전담했습니다.
+              </p>
+              <p class="work-detail__paragraph mb-3">
+                기획자·개발자와 협업하며 UI 구현 및 반응형 대응을 담당했습니다.
+              </p>
+              <a href="https://seoul-con.com/ko" target="_blank"
+                >서울콘 홈페이지 바로가기 🔗</a
+              >
+              <p class="work-detail__notice">
+                ※ 본 프로젝트는 2024.10 ~ 2024.12 작업 기준이며, 현재는
+                리뉴얼되어 일부 화면이 변경되었습니다.
+              </p>
+            </section>
+
+            <hr class="work-detail__divider" />
+
+            <section class="work-detail__section">
+              <h4 class="work-detail__section-title">💻 퍼블리싱</h4>
+              <ul class="work-detail__list">
+                <li>• React 기반 컴포넌트 구조로 페이지 구현</li>
+                <li>• Styled-components를 활용한 공통 스타일 시스템 구성</li>
+                <li>• 헤더 / GNB / 푸터 공통 영역 퍼블리싱</li>
+                <li>• 메인 및 서브 페이지 UI 구현</li>
+                <li>• PC · Mobile 반응형 대응</li>
+                <li>• 인터랙션 및 간단한 애니메이션 구현</li>
+              </ul>
+            </section>
+          </div>
+        </template>
       </div>
 
       <!-- PROJECT -->
       <div id="section4">
+        <div class="s1-bg" aria-hidden="true">
+          <div class="s1-bg__fill"></div>
+        </div>
         <h5 class="title">PROJECT</h5>
 
         <div class="pj-preview" aria-hidden="true">
