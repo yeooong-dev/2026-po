@@ -30,6 +30,9 @@ let isAnimating = false;
 let workStage = 0;
 let isWheelGestureLocked = false;
 let wheelUnlockTimer = null;
+let touchStartY = 0;
+let touchEndY = 0;
+let isTouchGestureLocked = false;
 
 function setWorkStage(stage) {
   if (!section3) return;
@@ -127,7 +130,7 @@ function goToSection(index, options = {}) {
   animateScrollTo(sections[index].offsetTop, 1000, options.onComplete);
 }
 
-function animateWorkStage(nextStage) {
+function animateWorkStage(nextStage, onComplete) {
   if (isAnimating || nextStage === workStage) return;
 
   isAnimating = true;
@@ -137,7 +140,83 @@ function animateWorkStage(nextStage) {
   setTimeout(() => {
     isAnimating = false;
     currentIndex = 2;
+
+    if (typeof onComplete === "function") {
+      onComplete();
+    }
   }, 700);
+}
+
+function handleSectionSwipe(deltaY) {
+  if (isModalOpen) return;
+  if (isAnimating) return;
+  if (isTouchGestureLocked) return;
+
+  if (Math.abs(deltaY) < 50) return;
+
+  currentIndex = getClosestSectionIndex();
+  isTouchGestureLocked = true;
+
+  if (currentIndex === 2) {
+    if (deltaY > 0) {
+      if (workStage === 0) {
+        animateWorkStage(1, () => {
+          isTouchGestureLocked = false;
+        });
+      } else {
+        goToSection(3, {
+          onComplete: () => {
+            isTouchGestureLocked = false;
+          },
+        });
+      }
+    } else {
+      if (workStage === 1) {
+        animateWorkStage(0, () => {
+          isTouchGestureLocked = false;
+        });
+      } else {
+        goToSection(1, {
+          onComplete: () => {
+            isTouchGestureLocked = false;
+          },
+        });
+      }
+    }
+    return;
+  }
+
+  if (deltaY > 0) {
+    if (currentIndex === 1) {
+      goToSection(2, {
+        workStage: 0,
+        onComplete: () => {
+          isTouchGestureLocked = false;
+        },
+      });
+    } else {
+      goToSection(currentIndex + 1, {
+        onComplete: () => {
+          isTouchGestureLocked = false;
+        },
+      });
+    }
+  } else {
+    if (currentIndex === 3) {
+      goToSection(2, {
+        workStage: 1,
+        onComplete: () => {
+          isTouchGestureLocked = false;
+        },
+      });
+    } else {
+      goToSection(currentIndex - 1, {
+        onComplete: () => {
+          isTouchGestureLocked = false;
+        },
+      });
+    }
+  }
 }
 
 if (wrap) {
@@ -199,6 +278,50 @@ if (wrap) {
       }
     },
     { passive: false },
+  );
+}
+
+if (wrap) {
+  wrap.addEventListener(
+    "touchstart",
+    (e) => {
+      if (window.innerWidth > 992) return;
+      if (isModalOpen) return;
+      if (e.touches.length !== 1) return;
+
+      touchStartY = e.touches[0].clientY;
+    },
+    { passive: true },
+  );
+
+  wrap.addEventListener(
+    "touchmove",
+    (e) => {
+      if (window.innerWidth > 992) return;
+      if (isModalOpen) return;
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
+
+      if (e.touches.length !== 1) return;
+      e.preventDefault();
+    },
+    { passive: false },
+  );
+
+  wrap.addEventListener(
+    "touchend",
+    (e) => {
+      if (window.innerWidth > 992) return;
+      if (isModalOpen) return;
+
+      touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      handleSectionSwipe(deltaY);
+    },
+    { passive: true },
   );
 }
 
@@ -491,7 +614,7 @@ function updateHeaderColor() {
 function updateActiveMenu() {
   if (!sections.length) return;
 
-  const scrollTop = window.innerWidth <= 992 ? window.scrollY : wrap.scrollTop;
+  const scrollTop = wrap ? wrap.scrollTop : window.scrollY;
   const viewportHeight =
     window.innerWidth <= 992 ? window.innerHeight : wrap.clientHeight;
 
@@ -536,10 +659,12 @@ sideMenuDots.forEach((dot, index) => {
     if (!target) return;
 
     if (window.innerWidth <= 992) {
-      window.scrollTo({
-        top: target.offsetTop,
-        behavior: "smooth",
-      });
+      if (wrap) {
+        wrap.scrollTo({
+          top: target.offsetTop,
+          behavior: "smooth",
+        });
+      }
       return;
     }
 
@@ -573,10 +698,12 @@ document.querySelectorAll(".side-menu__nav a").forEach((link) => {
     );
 
     if (window.innerWidth <= 992) {
-      window.scrollTo({
-        top: target.offsetTop,
-        behavior: "smooth",
-      });
+      if (wrap) {
+        wrap.scrollTo({
+          top: target.offsetTop,
+          behavior: "smooth",
+        });
+      }
       return;
     }
 
