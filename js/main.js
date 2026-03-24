@@ -85,7 +85,7 @@ function easeInOutQuart(t) {
   return t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
 }
 
-function animateScrollTo(targetY, duration = 1400, onComplete) {
+function animateScrollTo(targetY, duration = 1000, onComplete) {
   if (!wrap) return;
 
   const startY = wrap.scrollTop;
@@ -124,7 +124,7 @@ function goToSection(index, options = {}) {
 
   isAnimating = true;
   currentIndex = index;
-  animateScrollTo(sections[index].offsetTop, 1400, options.onComplete);
+  animateScrollTo(sections[index].offsetTop, 1000, options.onComplete);
 }
 
 function animateWorkStage(nextStage) {
