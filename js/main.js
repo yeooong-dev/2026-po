@@ -1,7 +1,5 @@
-// HEADER
 const header = document.querySelector(".header");
 const wrap = document.querySelector("#wrap");
-const section4 = document.querySelector("#section4");
 
 function getScrollTopValue() {
   return wrap ? wrap.scrollTop : 0;
@@ -326,35 +324,26 @@ if (wrap) {
 }
 
 // fade-up 애니메이션
-const items = document.querySelectorAll(".fade-up");
-const items2 = document.querySelectorAll(".fade-up-02");
+function createFadeObserver(selector, threshold) {
+  const elements = document.querySelectorAll(selector);
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      entry.target.classList.toggle("show", entry.isIntersecting);
-    });
-  },
-  {
-    root: window.innerWidth <= 992 ? null : wrap,
-    threshold: 0.2,
-  },
-);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+      });
+    },
+    {
+      root: window.innerWidth <= 992 ? null : wrap,
+      threshold,
+    },
+  );
 
-const observer2 = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      entry.target.classList.toggle("show", entry.isIntersecting);
-    });
-  },
-  {
-    root: window.innerWidth <= 992 ? null : wrap,
-    threshold: 0.6,
-  },
-);
+  elements.forEach((element) => observer.observe(element));
+}
 
-items.forEach((item) => observer.observe(item));
-items2.forEach((item) => observer2.observe(item));
+createFadeObserver(".fade-up", 0.2);
+createFadeObserver(".fade-up-02", 0.6);
 
 // 배경색 애니메이션
 (() => {
@@ -457,8 +446,8 @@ window.addEventListener("keydown", function (e) {
 // PROJECT 커서 이미지
 const rows = document.querySelectorAll(".project-row");
 const preview = document.querySelector(".pj-preview");
-const backImg = preview.querySelector(".pj-img--back");
-const frontImg = preview.querySelector(".pj-img--front");
+const backImg = preview ? preview.querySelector(".pj-img--back") : null;
+const frontImg = preview ? preview.querySelector(".pj-img--front") : null;
 
 let currentSrc = "";
 let mouseX = 0,
@@ -472,6 +461,8 @@ let activeRow = null;
 let isOverLinks = false;
 
 function render() {
+  if (!preview) return;
+
   const x = mouseX + offsetX;
   const y = mouseY + offsetY;
   const scale = preview.classList.contains("show") ? 1 : 0.98;
@@ -485,55 +476,57 @@ function movePreview(e) {
   if (!rafId) rafId = requestAnimationFrame(render);
 }
 
-document.addEventListener("mousemove", movePreview);
+if (preview && backImg && frontImg) {
+  document.addEventListener("mousemove", movePreview);
 
-function setPreviewImage(nextSrc) {
-  if (!nextSrc || nextSrc === currentSrc) return;
+  function setPreviewImage(nextSrc) {
+    if (!nextSrc || nextSrc === currentSrc) return;
 
-  const img = new Image();
-  img.onload = () => {
-    frontImg.src = nextSrc;
-    preview.classList.add("swap");
+    const img = new Image();
+    img.onload = () => {
+      frontImg.src = nextSrc;
+      preview.classList.add("swap");
 
-    frontImg.addEventListener("transitionend", function handler() {
-      backImg.src = nextSrc;
-      preview.classList.remove("swap");
-      currentSrc = nextSrc;
-      frontImg.removeEventListener("transitionend", handler);
+      frontImg.addEventListener("transitionend", function handler() {
+        backImg.src = nextSrc;
+        preview.classList.remove("swap");
+        currentSrc = nextSrc;
+        frontImg.removeEventListener("transitionend", handler);
+      });
+    };
+    img.src = nextSrc;
+  }
+
+  rows.forEach((row) => {
+    row.addEventListener("mouseenter", () => {
+      activeRow = row;
+
+      if (!isOverLinks) preview.classList.add("show");
+
+      setPreviewImage(row.dataset.img);
     });
-  };
-  img.src = nextSrc;
+
+    row.addEventListener("mouseleave", () => {
+      activeRow = null;
+      isOverLinks = false;
+      preview.classList.remove("show");
+    });
+  });
+
+  document
+    .querySelectorAll(".pj-year, .pj-links, .pj-links *")
+    .forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        isOverLinks = true;
+        preview.classList.remove("show");
+      });
+
+      el.addEventListener("mouseleave", () => {
+        isOverLinks = false;
+        if (activeRow) preview.classList.add("show");
+      });
+    });
 }
-
-rows.forEach((row) => {
-  row.addEventListener("mouseenter", () => {
-    activeRow = row;
-
-    if (!isOverLinks) preview.classList.add("show");
-
-    setPreviewImage(row.dataset.img);
-  });
-
-  row.addEventListener("mousemove", movePreview);
-
-  row.addEventListener("mouseleave", () => {
-    activeRow = null;
-    isOverLinks = false;
-    preview.classList.remove("show");
-  });
-});
-
-document.querySelectorAll(".pj-year, .pj-links, .pj-links *").forEach((el) => {
-  el.addEventListener("mouseenter", () => {
-    isOverLinks = true;
-    preview.classList.remove("show");
-  });
-
-  el.addEventListener("mouseleave", () => {
-    isOverLinks = false;
-    if (activeRow) preview.classList.add("show");
-  });
-});
 
 // CONTACT
 const section5 = document.querySelector("#section5");
@@ -652,36 +645,39 @@ function updateActiveMenu() {
   }
 }
 
-sideMenuDots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    const targetSelector = dot.dataset.target;
-    const target = document.querySelector(targetSelector);
-    if (!target) return;
+function moveToMenuTarget(targetSelector, targetIndex) {
+  const target = document.querySelector(targetSelector);
+  if (!target) return;
 
-    if (window.innerWidth <= 992) {
-      if (wrap) {
-        wrap.scrollTo({
-          top: target.offsetTop,
-          behavior: "smooth",
-        });
-      }
-      return;
+  if (window.innerWidth <= 992) {
+    if (wrap) {
+      wrap.scrollTo({
+        top: target.offsetTop,
+        behavior: "smooth",
+      });
     }
+    return;
+  }
 
-    if (isAnimating) return;
+  if (isAnimating) return;
 
-    if (index === 2) {
+  if (targetIndex === 2) {
+    setWorkStage(0);
+  }
+
+  isAnimating = true;
+  currentIndex = targetIndex;
+  animateScrollTo(target.offsetTop, 1000, () => {
+    if (targetIndex === 2) {
       setWorkStage(0);
     }
+    updateHeaderColor();
+  });
+}
 
-    isAnimating = true;
-    currentIndex = index;
-    animateScrollTo(target.offsetTop, 1000, () => {
-      if (index === 2) {
-        setWorkStage(0);
-      }
-      updateHeaderColor();
-    });
+sideMenuDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    moveToMenuTarget(dot.dataset.target, index);
   });
 });
 
@@ -690,39 +686,12 @@ document.querySelectorAll(".side-menu__nav a").forEach((link) => {
     e.preventDefault();
 
     const targetSelector = this.getAttribute("href");
-    const target = document.querySelector(targetSelector);
-    if (!target) return;
-
     const targetIndex = sections.findIndex(
       (section) => section && `#${section.id}` === targetSelector,
     );
 
-    if (window.innerWidth <= 992) {
-      if (wrap) {
-        wrap.scrollTo({
-          top: target.offsetTop,
-          behavior: "smooth",
-        });
-      }
-      return;
-    }
-
-    if (isAnimating) return;
-
-    if (targetIndex === 2) {
-      setWorkStage(0);
-    }
-
-    isAnimating = true;
-    currentIndex = targetIndex;
-    animateScrollTo(target.offsetTop, 1000, () => {
-      if (targetIndex === 2) {
-        setWorkStage(0);
-      }
-      updateHeaderColor();
-    });
+    moveToMenuTarget(targetSelector, targetIndex);
   });
 });
 
 updateHeaderColor();
-updateActiveMenu();
